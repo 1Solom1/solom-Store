@@ -1,0 +1,370 @@
+body {
+  height: auto;
+}
+
+/* ========================
+   Display Data Section
+======================== */
+#display_data {
+  width: 70%;
+  max-width: 1500px;
+  height: auto;
+  /* دمجنا الـ margin-top و margin-bottom هنا */
+  
+  margin: 120px auto 80px auto; 
+  font-family: cursive;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-template-rows: auto;
+  gap: 40px;
+}
+
+#display_data .cart_item {
+  width: 500px;
+  max-width: 550px;
+  height: 250px;
+  background-color: rgb(237, 237, 237);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: 0.3s;
+  box-shadow: 1px 1px 20px 1px rgb(175, 175, 175);
+}
+
+#display_data .cart_item:hover {
+  transform: translateY(-7px);
+  box-shadow: 1px 1px 20px 0.2px rgb(91, 91, 123);
+}
+
+#display_data .cart_item img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  margin-right: 20px;
+}
+
+#display_data .cart_item .item_info {
+  flex: 1;
+  margin-left: 50px;
+}
+
+#display_data .cart_item .item_info .rme {
+  width: 150px;
+  background-color: rgb(113, 35, 35);
+  height: 35px;
+  color: white;
+  margin-left: -20px;
+  margin-top: 20px;
+  font-family: cursive;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#display_data .cart_item .item_info .rme:active {
+  transform: translateY(3px);
+}
+
+/* ========================
+   Display Love Data Section
+======================== */
+#display_love_data {
+  width: 70%;
+  max-width: 1200px;
+  height: auto;
+  /* تم دمج الخصائص المتكررة لنفس الـ id */
+  margin: 120px auto 50px 175px; 
+  text-align: center;
+  font-size: larger;
+  font-family: cursive;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(380px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(300px, 520px));
+  gap: 30px;
+}
+
+#display_love_data h1 {
+  border-bottom: 1px solid black;
+  padding-bottom: 16px;
+  width: 290px;
+  margin: 30px auto 0 auto;
+}
+#display_love_data img {
+  width: 330px;
+  height: 330px;
+  padding-top: 5px;
+}
+
+/* ========================
+   HRRR Section
+======================== */
+.hrrr {
+  width: 350px;
+  height: 50px;
+  margin: 50px auto 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hrrr hr {
+  width: inherit;
+  text-align: center;
+  margin: auto;
+  color: rgb(0, 0, 36);
+}
+
+.hrrr p {
+  text-align: center;
+  width: 320px;
+  color: rgb(0, 0, 0);
+  font-size: 50px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;  
+  border-bottom: 1px solid black;
+  padding-bottom: 20px;
+  transition: 0.5s;
+}
+
+.hrrr p:hover {
+  width: 370px;
+  letter-spacing: 2px;
+  border-bottom-color: rgb(0, 0, 61);
+}
+
+/* ========================
+   OKK Section
+======================== */
+.okk {
+  width: 350px;
+  height: 430px;
+}
+
+.okk .details {
+  width: 100%;
+  height: 40%;
+  padding-bottom: 10px;
+  font-size: small;
+}
+
+.okk img {
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.okk .col_icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ========================
+   Total Section
+======================== */
+#ttotal {
+  padding-bottom: 25px;
+  color: rgb(0, 47, 97);
+}
+
+/* ========================
+   RESPONSIVE MEDIA QUERIES
+======================== */
+
+@media screen and (max-width: 1400px) {
+  #display_love_data {
+    margin-left: auto;
+    width: 90%;
+    grid-template-columns: repeat(2, minmax(340px, 1fr));
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #display_data {
+    width: 90%;
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+  }
+  
+  #display_data .cart_item {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  #display_love_data {
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    width: 95%;
+  }
+  
+  .okk {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #display_data .cart_item {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+  }
+  
+  #display_data .cart_item img {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+  
+  #display_data .cart_item .item_info {
+    margin-left: 0;
+    text-align: center;
+    width: 100%;
+  }
+  
+  #display_data .cart_item .item_info .rme {
+    margin-left: 0;
+  }
+  
+  #display_love_data {
+    grid-template-columns: 1fr;
+    margin-left: auto;
+    justify-items: center;
+  }
+  
+  .hrrr {
+    width: 90%;
+    max-width: 350px;
+  }
+  
+  .hrrr p {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #display_data {
+    margin-top: 80px;
+    width: 95%;
+    gap: 20px;
+  }
+  
+  #display_data .cart_item {
+    max-width: 100%;
+  }
+  
+  #display_data .cart_item img {
+    width: 180px;
+    height: 180px;
+  }
+  
+  #display_love_data {
+    margin-top: 80px;
+    width: 95%;
+    gap: 20px;
+  }
+  
+  .okk {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    padding-bottom: 20px;
+  }
+  
+  .okk img {
+    width: 180px;
+    height: 220px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #display_data {
+    margin-top: 60px;
+    width: 98%;
+  }
+  
+  #display_data .cart_item {
+    padding: 15px;
+  }
+  
+  #display_data .cart_item img {
+    width: 150px;
+    height: 150px;
+  }
+  
+  #display_data .cart_item .item_info h2 {
+    font-size: 1.2rem;
+  }
+  
+  #display_love_data {
+    margin-top: 60px;
+  }
+  
+  .hrrr p {
+    font-size: 32px;
+  }
+  
+  #display_love_data h1 {
+    width: 260px;
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #display_data .cart_item {
+    max-width: 100%;
+  }
+  
+  #display_data .cart_item img {
+    width: 130px;
+    height: 130px;
+  }
+  
+  #display_data .cart_item .item_info .rme {
+    width: 130px;
+    height: 40px;
+  }
+  
+  .okk {
+    max-width: 280px;
+  }
+  
+  .okk img {
+    width: 160px;
+    height: 200px;
+  }
+  
+  .hrrr p {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  #display_data .cart_item img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  #display_data .cart_item .item_info h2 {
+    font-size: 1rem;
+  }
+  
+  .okk {
+    max-width: 250px;
+  }
+  
+  .okk img {
+    width: 140px;
+    height: 180px;
+  }
+  
+  .hrrr p {
+    font-size: 24px;
+  }
+}

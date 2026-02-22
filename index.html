@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Css/style.css" />
+    <link rel="stylesheet" href="Css/all.min.css" />
+    <title>Project-3 || JS</title>
+  </head>
+  <body>
+    <div class="header">
+      <img id="lll" src="images/logo3.png" alt=""  />
+
+      <div id="collection_btns">
+        <button id="login" href="Login.html">
+          <a href="Login.html">Login</a>
+        </button>
+        <button id="register"><a href="Register.html">Register</a></button>
+        <span id="welcome" style="display: none"></span>
+
+        <div id="car">
+          <i id="car_cart" class="fa-solid fa-cart-arrow-down" id="num"></i>
+          <span id="cartCounter">0</span>
+        </div>
+
+        <button id="logout"  style="display: none">
+          <a href="Login.html" >Logout</a>
+        </button>
+      </div>
+    </div>
+<div id="scroll_home">↑</div>
+    <div id="sec1" >
+      <select name="" id="selc"  onkeyup="Search(this.value)">
+        <option value="Search By Product Name"onclick="SearchFun(this.id)" id="sss">Search By Product Name</option>
+        <option value="Search By Category"onclick="SearchFun(this.id)" id="ccc">Search By Category</option>
+      </select>
+      <input type="search" name="" id="search" placeholder="Search..." onkeyup="Search()" />
+      <button id="search_btn">Search</button>
+    </div>
+    <div id="sec2"></div>
+    <div class="overlay"></div>
+
+<div id="shopping_cart">
+    <h1>Shopping Cart</h1>
+    <div class="cart_content">
+        </div>
+    <div class="cart_footer">
+        <button class="checkout">View All Products</button>
+    </div>
+</div>
+
+<div class="overlay"></div>
+
+<script src="java_script/script.js"></script>
+<script src="java_script/Login.js"></script>
