@@ -71,18 +71,58 @@ body {
    Display Love Data Section
 ======================== */
 #display_love_data {
-  width: 70%;
-  max-width: 1200px;
+  display: flex;                    
+  flex-direction: row;              
+  justify-content: flex-start;      
+  align-items: start;
+  width: 80%;
+  margin: 60px auto 50px auto;
   height: auto;
-  /* تم دمج الخصائص المتكررة لنفس الـ id */
-  margin: 120px auto 50px 175px; 
+  min-height: 450px;               
+  padding: 20px;
+  overflow-x: auto;                  
+  overflow-y: hidden;               
+  gap: 20px;                         
+  white-space: nowrap;               
+  scroll-behavior: smooth; 
+  /* box-shadow: 1px 1px 15px 3px rgb(210, 210, 210);        
+  border-radius: 20px;   */
+}
+
+#display_love_data::-webkit-scrollbar {
+  display: none;                     
+}
+
+#display_love_data {
+  scrollbar-width: none;
+}
+
+#display_love_data h1 {
+  border-bottom: 1px solid black;
+  padding-bottom: 16px;
+  width: 290px;
+  margin: 0;                          
+  flex-shrink: 0;                     
+  align-self: center;                  
+}
+
+#display_love_data img {
+  width: 330px;
+  height: 330px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;                     
+}
+
+#display_love_data > div {
+  flex-shrink: 0;                     
+  width: 350px;                       
+  margin-right: 15px;                  
   text-align: center;
-  font-size: larger;
-  font-family: cursive;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(380px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(300px, 520px));
-  gap: 30px;
+}
+#display_love_data::-webkit-scrollbar
+{
+   display: none;
 }
 
 #display_love_data h1 {
@@ -167,204 +207,4 @@ body {
 #ttotal {
   padding-bottom: 25px;
   color: rgb(0, 47, 97);
-}
-
-/* ========================
-   RESPONSIVE MEDIA QUERIES
-======================== */
-
-@media screen and (max-width: 1400px) {
-  #display_love_data {
-    margin-left: auto;
-    width: 90%;
-    grid-template-columns: repeat(2, minmax(340px, 1fr));
-    justify-content: center;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  #display_data {
-    width: 90%;
-    grid-template-columns: repeat(1, 1fr);
-    justify-items: center;
-  }
-  
-  #display_data .cart_item {
-    width: 100%;
-    max-width: 600px;
-  }
-}
-
-@media screen and (max-width: 1100px) {
-  #display_love_data {
-    grid-template-columns: repeat(2, minmax(300px, 1fr));
-    width: 95%;
-  }
-  
-  .okk {
-    width: 100%;
-    max-width: 350px;
-    margin: 0 auto;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  #display_data .cart_item {
-    flex-direction: column;
-    height: auto;
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-  }
-  
-  #display_data .cart_item img {
-    margin-right: 0;
-    margin-bottom: 15px;
-  }
-  
-  #display_data .cart_item .item_info {
-    margin-left: 0;
-    text-align: center;
-    width: 100%;
-  }
-  
-  #display_data .cart_item .item_info .rme {
-    margin-left: 0;
-  }
-  
-  #display_love_data {
-    grid-template-columns: 1fr;
-    margin-left: auto;
-    justify-items: center;
-  }
-  
-  .hrrr {
-    width: 90%;
-    max-width: 350px;
-  }
-  
-  .hrrr p {
-    font-size: 40px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  #display_data {
-    margin-top: 80px;
-    width: 95%;
-    gap: 20px;
-  }
-  
-  #display_data .cart_item {
-    max-width: 100%;
-  }
-  
-  #display_data .cart_item img {
-    width: 180px;
-    height: 180px;
-  }
-  
-  #display_love_data {
-    margin-top: 80px;
-    width: 95%;
-    gap: 20px;
-  }
-  
-  .okk {
-    width: 100%;
-    max-width: 320px;
-    height: auto;
-    padding-bottom: 20px;
-  }
-  
-  .okk img {
-    width: 180px;
-    height: 220px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  #display_data {
-    margin-top: 60px;
-    width: 98%;
-  }
-  
-  #display_data .cart_item {
-    padding: 15px;
-  }
-  
-  #display_data .cart_item img {
-    width: 150px;
-    height: 150px;
-  }
-  
-  #display_data .cart_item .item_info h2 {
-    font-size: 1.2rem;
-  }
-  
-  #display_love_data {
-    margin-top: 60px;
-  }
-  
-  .hrrr p {
-    font-size: 32px;
-  }
-  
-  #display_love_data h1 {
-    width: 260px;
-    font-size: 1.5rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  #display_data .cart_item {
-    max-width: 100%;
-  }
-  
-  #display_data .cart_item img {
-    width: 130px;
-    height: 130px;
-  }
-  
-  #display_data .cart_item .item_info .rme {
-    width: 130px;
-    height: 40px;
-  }
-  
-  .okk {
-    max-width: 280px;
-  }
-  
-  .okk img {
-    width: 160px;
-    height: 200px;
-  }
-  
-  .hrrr p {
-    font-size: 28px;
-  }
-}
-
-@media screen and (max-width: 380px) {
-  #display_data .cart_item img {
-    width: 120px;
-    height: 120px;
-  }
-  
-  #display_data .cart_item .item_info h2 {
-    font-size: 1rem;
-  }
-  
-  .okk {
-    max-width: 250px;
-  }
-  
-  .okk img {
-    width: 140px;
-    height: 180px;
-  }
-  
-  .hrrr p {
-    font-size: 24px;
-  }
 }
