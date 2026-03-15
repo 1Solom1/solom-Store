@@ -267,8 +267,13 @@ window.addEventListener("DOMContentLoaded", () => {
         <h4>Total: $${total}</h4>
       </div>
     `;
+        ttotal.innerHTML = `
+      <div class="cart_total" style="width: 100%; margin-bottom:50px;">
+        <h3>Total: $${total}</h3>
+      </div>
+    `;
   }
-
+var ttotal = document.getElementById("ttotal");
   function displayCart2() {
     if (!display_data) return;
     display_data.innerHTML = "";
@@ -300,12 +305,12 @@ window.addEventListener("DOMContentLoaded", () => {
       `;
     });
 
-    display_data.innerHTML += `
-      <div class="cart_total" style="width: 100%; margin-bottom:50px;">
-        <hr style="width: 100%;">
-        <h3>Total: $${total}</h3>
-      </div>
-    `;
+    // ttotal.innerHTML += `
+    //   <div class="cart_total" style="width: 100%; margin-bottom:50px;">
+    //     <hr style="width: 100%;">
+    //     <h3>Total: $${total}</h3>
+    //   </div>
+    // `;
   }
 
   function displayCart3() {
@@ -562,7 +567,6 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // ✅ صح: بنستخدم cart.length عشان نعرف إذا كان في منتجات في السلة ولا لأ
 
 
   // ======================== التهيئة الأولية ========================
