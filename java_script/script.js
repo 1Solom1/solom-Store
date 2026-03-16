@@ -135,10 +135,10 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     displayCounter();
     updateProductButtons();
+    updateLoveIcons();
   }
 
   // ======================== دالة إنشاء كارت المنتج ========================
-  // تم توحيد التصميم هنا لمنع تكرار الكود في دوال الرسم والبحث
   function createProductCard(item) {
     const isInCart = cart.some((cartItem) => cartItem.id === item.id);
     const isLoved = loveItems.some((loveItem) => loveItem.id === item.id);
@@ -239,6 +239,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (cart.length === 0) {
       cart_content.innerHTML = "<p>Your cart is empty</p>";
+      if (typeof ttotal !== "undefined" && ttotal) {
+        ttotal.innerHTML = "";
+      }
       return;
     }
 
@@ -267,13 +270,17 @@ window.addEventListener("DOMContentLoaded", () => {
         <h4>Total: $${total}</h4>
       </div>
     `;
-        ttotal.innerHTML = `
-      <div class="cart_total" style="width: 100%; margin-bottom:50px;">
-        <h3>Total: $${total}</h3>
-      </div>
-    `;
+
+    if (typeof ttotal !== "undefined" && ttotal) {
+      ttotal.innerHTML = `
+        <div class="cart_total" style="width: 100%; margin-bottom:50px;">
+          <h3>Total: $${total}</h3>
+        </div>
+      `;
+    }
   }
-var ttotal = document.getElementById("ttotal");
+
+  var ttotal = document.getElementById("ttotal");
   function displayCart2() {
     if (!display_data) return;
     display_data.innerHTML = "";
@@ -304,13 +311,6 @@ var ttotal = document.getElementById("ttotal");
       </div>
       `;
     });
-
-    // ttotal.innerHTML += `
-    //   <div class="cart_total" style="width: 100%; margin-bottom:50px;">
-    //     <hr style="width: 100%;">
-    //     <h3>Total: $${total}</h3>
-    //   </div>
-    // `;
   }
 
   function displayCart3() {
@@ -352,6 +352,37 @@ var ttotal = document.getElementById("ttotal");
       });
   }
 
+  // ======================== تحديث مظهر الأزرار والأيقونات ========================
+  function updateProductButtons() {
+    document.querySelectorAll(".add-to-cart").forEach((button) => {
+      const id = parseInt(button.getAttribute("data-id"));
+      const existingItem = cart.some((item) => item.id === id);
+
+      if (existingItem) {
+        button.innerHTML = "Remove from Cart";
+        button.style.backgroundColor = "rgb(131, 8, 8)";
+        button.style.color = "white";
+      } else {
+        button.innerHTML = "Add to Cart";
+        button.style.backgroundColor = "";
+        button.style.color = "";
+      }
+    });
+  }
+
+  function updateLoveIcons() {
+    document.querySelectorAll(".love-icon").forEach((icon) => {
+      const id = parseInt(icon.getAttribute("data-id"));
+      const isLoved = loveItems.some((item) => item.id === id);
+
+      if (isLoved) {
+        icon.style.color = "red";
+      } else {
+        icon.style.color = "#ccc";
+      }
+    });
+  }
+
   // ======================== إدارة السلة ========================
   function addToCart(id, buttonElement) {
     if (!localStorage.getItem("Logged")) {
@@ -369,12 +400,7 @@ var ttotal = document.getElementById("ttotal");
       displayCart();
       displayCounter();
       displayCart2();
-
-      if (buttonElement) {
-        buttonElement.innerHTML = "Remove from Cart";
-        buttonElement.style.backgroundColor = "rgb(131, 8, 8)";
-        buttonElement.style.color = "white";
-      }
+      updateProductButtons(); // تحديث الأزرار فوراً
     } else {
       increaseQuantity(cart.indexOf(existingItem));
     }
@@ -389,12 +415,7 @@ var ttotal = document.getElementById("ttotal");
         displayCart();
         displayCounter();
         displayCart2();
-
-        if (buttonElement) {
-          buttonElement.innerHTML = "Add to Cart";
-          buttonElement.style.backgroundColor = "";
-          buttonElement.style.color = "";
-        }
+        updateProductButtons(); // تحديث الأزرار فوراً
       }
     }
   }
@@ -407,6 +428,7 @@ var ttotal = document.getElementById("ttotal");
       displayCounter();
       displayCart2();
       drawItems();
+      updateProductButtons(); // تحديث الأزرار فوراً
     }
   };
 
@@ -444,10 +466,7 @@ var ttotal = document.getElementById("ttotal");
     if (!existingItem) {
       loveItems.push(chosenItem);
       localStorage.setItem("loveItems", JSON.stringify(loveItems));
-
-      if (iconElement) {
-        iconElement.style.color = "red";
-      }
+      updateLoveIcons(); // تحديث الأيقونات فوراً
       if (display_love_data) displayCart3();
     }
   }
@@ -457,10 +476,7 @@ var ttotal = document.getElementById("ttotal");
     if (itemIndex !== -1) {
       loveItems.splice(itemIndex, 1);
       localStorage.setItem("loveItems", JSON.stringify(loveItems));
-
-      if (iconElement) {
-        iconElement.style.color = "#ccc";
-      }
+      updateLoveIcons(); // تحديث الأيقونات فوراً
       if (display_love_data) displayCart3();
     }
   }
@@ -468,24 +484,6 @@ var ttotal = document.getElementById("ttotal");
   // ربط الدوال بالـ Global Object لاستخدامها في الـ HTML
   window.addToCart_love = addToCart_love;
   window.removeFromLove = removeFromLove;
-
-  function updateProductButtons() {
-    document.querySelectorAll(".add-to-cart").forEach((button) => {
-      const id = parseInt(button.getAttribute("data-id"));
-      const existingItem = cart.some((item) => item.id === id);
-
-      if (existingItem) {
-        button.innerHTML = "Remove from Cart";
-        button.style.backgroundColor = "rgb(131, 8, 8)";
-        button.style.color = "white";
-      } else {
-        button.innerHTML = "Add to Cart";
-        button.style.backgroundColor = "";
-        button.style.color = "";
-      }
-
-    });
-  }
 
   // ======================== أحداث الهيدر ========================
   if (login) login.onclick = () => (window.location.href = "Login.html");
@@ -559,15 +557,15 @@ var ttotal = document.getElementById("ttotal");
       scroll_home.style.visibility = "hidden";
     }
   };
-  scroll_home.onclick = function () {
-    scroll({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
-
-
+  if (scroll_home) {
+    scroll_home.onclick = function () {
+      scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    };
+  }
 
   // ======================== التهيئة الأولية ========================
   updateHeader();
@@ -576,5 +574,4 @@ var ttotal = document.getElementById("ttotal");
   displayCounter();
   displayCart2();
   if (display_love_data) displayCart3();
-  updateProductButtons();
 });
